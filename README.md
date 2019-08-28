@@ -8,7 +8,7 @@ Documentation on how to use custom providers on terraform cloud specifically can
 
 In this project the provider binary is stored in a different git repository which is added as a git [submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules). The submodule folder is `bin-tf-provider-okta`. The binary in it is for Linux/amd64.
 
-The provider binary is sym-linked to the appropriate location for terraform external providers - `terraform.d/plugins/linux_amd64/`. 
+The provider binary is sym-linked to the appropriate location for terraform external providers - `terraform.d/plugins/linux_amd64/` in this case as we are using a Linux/amd64 binary.
 
 The sym-link must be relative from the providers folder to the folder containing the binary - `terraform-provider-okta_v3.0.21_x4 -> ../../../bin-tf-provider-okta/terraform-provider-okta_v3.0.21_x4`.
 
@@ -22,7 +22,7 @@ Run `terraform init` and `terraform plan`. If all is successful terraform will n
 
 Set up Terraform Cloud VCS connection as described [here](https://www.terraform.io/docs/cloud/vcs/index.html). 
 
-After the OAuth connection is set up you'll need to add to it a SSH key that provides access to the submodule with the external provider binary. The set up connections can be found in the terraform organization settings under `VCS Providers`. To add the SSH key click on the link in the `Connection` section of the relative VCS provider. This is not needed if the git submodule is added via the `https` as it is then publicly accessible.
+After the OAuth connection is set up you'll need to add to it a SSH key that provides access to the submodule with the external provider binary. This can be done in the organization settings under `VCS Providers`. To add the SSH key click on the link in the `Connection` section of the relative VCS provider. This is not needed if the git submodule is added via the `https` scheme as it is then publicly accessible.
 
 Create a Terraform workspace, connected to the repository. Make sure to check the option `Include submodules on clone` in the `Advanced options` section. It can also be found in the workspace's settings under `Version Control`.
 
