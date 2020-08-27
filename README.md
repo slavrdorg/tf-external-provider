@@ -1,18 +1,18 @@
 # Terraform external provider
 
-A demo of how to use an external provider in terraform. 
+A demo of how to use an external provider in Terraform 0.12.
 
 Documentation of how to use external terraform providers can be found [here](https://www.terraform.io/docs/plugins/basics.html). The page contains basic information and links to other pages with more details. 
 
-Documentation on how to use custom providers on terraform cloud specifically can be found [here](https://www.terraform.io/docs/cloud/run/index.html#installing-terraform-providers).
+Documentation on how to use custom providers on Terraform Cloud specifically can be found [here](https://www.terraform.io/docs/cloud/run/index.html#installing-terraform-providers).
 
-In this project the provider binary is stored in a different git repository which is added as a git [submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules). The submodule folder is `bin-tf-provider-okta`. The binary in it is for Linux/amd64.
+In this project the provider binary is stored in a different git repository which is added to this one as a git [submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules). The submodule directory is `bin-tf-provider-okta`. The binary in it is for Linux/amd64.
 
-The provider binary is sym-linked to the appropriate location for terraform external providers - `terraform.d/plugins/linux_amd64/` in this case as we are using a Linux/amd64 binary.
+The provider binary is sym-linked to the appropriate location for terraform external providers - `terraform.d/plugins/linux_amd64/` - as in this case as we are using a Linux/amd64 binary.
 
-The sym-link must be relative from the providers folder to the folder containing the binary - `terraform-provider-okta_v3.0.21_x4 -> ../../../bin-tf-provider-okta/terraform-provider-okta_v3.0.21_x4`.
+The sym-link must be relative from the terraform provider's directory to the directory containing the binary - `terraform-provider-okta_v3.0.21_x4 -> ../../../bin-tf-provider-okta/terraform-provider-okta_v3.0.21_x4`.
 
-Tp clone a project including its submodules - `git clone --recurse-submodules <repository>` 
+To clone a project, including its submodules - `git clone --recurse-submodules <repository>` 
 
 ## Using with Terraform CLI
 
