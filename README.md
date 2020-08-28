@@ -35,12 +35,12 @@ A successful plan will be executed, showing that there are no changes to be made
 
 If the setup is correct Terraform Cloud should be able to perform a successful plan that shows that there are no changes needed. This indicates that the initialization phase was successful and the custom provider defined in the terraform configuration was detected and considered installed.
 
-**Note:** When using a repository in which the git submodules are refrenced via the `SSH` scheme you must add SSH key to the created Terraform Cloud OAuth client. This key must authenticate a VCS user that has access to clone the repository containing the submodule. This is true even if the repository is public and in this case any valid VCS user will do.
+**Note:** When using a repository in which the git submodules are refrenced via the `SSH` scheme you must add SSH key to the created Terraform Cloud OAuth client. This key must authenticate a VCS user that has access to clone the repository referenced as a submodule. This is true even if the repository is public and in this case any valid VCS user will do.
 
 How to add an SSH key for cloning git submodules to the Terraform Cloud VCS connection client is described [here](https://www.terraform.io/docs/cloud/vcs/index.html#ssh-keys).
 
 ## References
 
-* Documentation of how to use external terraform providers can be found [here](https://www.terraform.io/docs/plugins/basics.html). The page contains basic information and links to other pages with more details. 
+* Documentation on how to use external terraform providers can be found [here](https://www.terraform.io/docs/plugins/basics.html). The page contains basic information and links to other pages with more details. 
 
 * Documentation on how to use custom providers on Terraform Cloud specifically can be found [here](https://www.terraform.io/docs/cloud/run/index.html#installing-terraform-providers).
