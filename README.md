@@ -1,18 +1,22 @@
 # Terraform external provider
 
-A demo of how to use an external provider in Terraform 0.12.
+A demo of how to use an external provider in Terraform 0.13.
+
+Demo for version 0.12 is available by checking out the 0.12 tag of this repo.
 
 In this project the provider binary is stored in a different git repository which is added to this one as a git [submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules). The submodule directory is `bin-tf-provider-okta`. The binary in it is for Linux/amd64.
 
-The provider binary is sym-linked to the appropriate location for terraform external providers. For example `terraform.d/plugins/linux_amd64/` in the case for the linux/amd64 binary.
+The provider binary is sym-linked to the appropriate location for terraform external providers. This location depends on how the provider is declared in the Terraform configuration. For example the linux/amd64 binary for the custom `okta` provider declared in `main.tf` should be in `terraform.d/plugins/providers.local/local/okta/3.0.38`.
 
-The sym-link must be relative from the terraform provider's directory to the directory containing the binary. For example in the case of the  linux/amd64 binary:
+The sym-link must be relative from the terraform provider's directory to the directory containing the binary. For example in the case of the linux/amd64 binary:
 
 ```bash
-terraform.d/plugins/linux_amd64/terraform-provider-okta_v3.0.38_x4 -> ../../../bin-tf-provider-okta/linux_amd64/terraform-provider-okta_v3.0.38_x4
+terraform.d/plugins/providers.local/local/okta/3.0.38/linux_amd64/terraform-provider-okta_v3.0.38_x4 -> ../../../../../../../bin-tf-provider-okta/linux_amd64/terraform-provider-okta_v3.0.38_x4
 ```
 
 ## Using with Terraform CLI
+
+* Have Terraform CLI version `0.13.x` installed
 
 * clone the project, including its submodules
 
@@ -52,6 +56,8 @@ How to add an SSH key for cloning git submodules to the Terraform Cloud VCS conn
 
 ## References
 
-* Documentation on how to use external terraform providers can be found [here](https://www.terraform.io/docs/plugins/basics.html). The page contains basic information and links to other pages with more details. 
+* Documentation on how to use external terraform providers can be found [here](https://www.terraform.io/docs/plugins/basics.html). The page contains basic information and links to other pages with more details.
 
-* Documentation on how to use custom providers on Terraform Cloud specifically can be found [here](https://www.terraform.io/docs/cloud/run/index.html#installing-terraform-providers).
+* Documentation on the naming schema for locally installed providers can be found [here](https://www.terraform.io/docs/configuration/provider-requirements.html#in-house-providers)
+
+* Documentation on how to use custom providers on Terraform Cloud specifically can be found [here](https://www.terraform.io/docs/cloud/run/install-software.html#installing-terraform-providers).
