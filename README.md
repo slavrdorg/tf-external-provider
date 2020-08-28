@@ -21,9 +21,9 @@ terraform.d/plugins/linux_amd64/terraform-provider-okta_v3.0.38_x4 -> ../../../b
   ```
 * set terraform to debug output so that the provider initialization process can be observed
 
-```bash
-export TF_LOG=DEBUG
-```
+  ```bash
+  export TF_LOG=DEBUG
+  ```
 
 * initialize terraform in the current directory and perform a plan
 
