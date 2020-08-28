@@ -14,6 +14,8 @@ terraform.d/plugins/linux_amd64/terraform-provider-okta_v3.0.38_x4 -> ../../../b
 
 ## Using with Terraform CLI
 
+* Have Terraform `0.12.x` installed.
+
 * clone the project, including its submodules
 
   ```bash
@@ -42,7 +44,11 @@ A successful plan will be executed, showing that there are no changes to be made
 
 * Create a Terraform workspace, connected to your fork of the repository. Make sure to check the option `Include submodules on clone` in the `Advanced options` section. It can also be found in the workspace's settings under `Version Control`.
 
+* Set the Terraform version used by the workspace to `0.12.x` by selecting it from the workspace's general settings.
+
 * In the workspace set environment variable `TF_LOG` to `DEBUG` and queue another terraform run.
+
+* Update the tracked VCS branch to `0.12`. To do that go to the workspace's `Settins > Version Control` and set `0.12` in the `VCS branch` field.
 
 If the setup is correct Terraform Cloud should be able to perform a successful plan that shows that there are no changes needed. This indicates that the initialization phase was successful and the custom provider defined in the terraform configuration was detected and considered installed. Additionally the messages in the terraform output indicate that the `okta` provider was loaded from the custom location in `terraform.d/plugins`.
 
