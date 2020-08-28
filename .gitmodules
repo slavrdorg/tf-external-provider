@@ -1,3 +1,0 @@
-[submodule "bin-tf-provider-okta"]
-	path = bin-tf-provider-okta
-	url = git@github.com:slavrdorg/bin-tf-provider-okta.git
