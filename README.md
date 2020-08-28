@@ -2,7 +2,7 @@
 
 A demo of how to use an external provider in Terraform 0.13.
 
-Demo for version 0.12 is available by checking out the 0.12 tag of this repo.
+Demo for version 0.12 is available by checking out the 0.12 [branch](https://github.com/slavrdorg/tf-external-provider/tree/0.12) or [tag](https://github.com/slavrdorg/tf-external-provider/releases/tag/0.12) of this repo.
 
 In this project the provider binary is stored in a different git repository which is added to this one as a git [submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules). The submodule directory is `bin-tf-provider-okta`. The binary in it is for Linux/amd64.
 
