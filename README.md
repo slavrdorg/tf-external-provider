@@ -4,9 +4,13 @@ A demo of how to use an external provider in Terraform 0.12.
 
 In this project the provider binary is stored in a different git repository which is added to this one as a git [submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules). The submodule directory is `bin-tf-provider-okta`. The binary in it is for Linux/amd64.
 
-The provider binary is sym-linked to the appropriate location for terraform external providers - `terraform.d/plugins/linux_amd64/` - as in this case as we are using a Linux/amd64 binary.
+The provider binary is sym-linked to the appropriate location for terraform external providers. For example `terraform.d/plugins/linux_amd64/` in the case for the linux/amd64 binary.
 
-The sym-link must be relative from the terraform provider's directory to the directory containing the binary - `terraform-provider-okta_v3.0.21_x4 -> ../../../bin-tf-provider-okta/terraform-provider-okta_v3.0.21_x4`.
+The sym-link must be relative from the terraform provider's directory to the directory containing the binary. For example in the case of the  linux/amd64 binary:
+
+```bash
+terraform.d/plugins/linux_amd64/terraform-provider-okta_v3.0.38_x4 -> ../../../bin-tf-provider-okta/linux_amd64/terraform-provider-okta_v3.0.38_x4
+```
 
 ## Using with Terraform CLI
 
@@ -14,6 +18,11 @@ The sym-link must be relative from the terraform provider's directory to the dir
 
   ```bash
   git clone --recurse https://github.com/slavrdorg/tf-external-provider.git
+  ```
+* set terraform to debug output so that the provider initialization process can be observed
+
+  ```bash
+  export TF_LOG=DEBUG
   ```
 
 * initialize terraform in the current directory and perform a plan
@@ -23,7 +32,7 @@ The sym-link must be relative from the terraform provider's directory to the dir
   terraform plan
   ```
 
-A successful plan will be executed, showing that there are no changes to be made. This indicates that the initialization phase was successful and the custom provider defined in the terraform configuration was detected and considered installed.
+A successful plan will be executed, showing that there are no changes to be made. This indicates that the initialization phase was successful and the custom provider defined in the terraform configuration was detected and considered installed. Additionally the messages in the terraform output indicate that the `okta` provider was loaded from the custom location in `terraform.d/plugins`.
 
 ## Using in Terraform Cloud with VCS driven runs
 
@@ -33,7 +42,9 @@ A successful plan will be executed, showing that there are no changes to be made
 
 * Create a Terraform workspace, connected to your fork of the repository. Make sure to check the option `Include submodules on clone` in the `Advanced options` section. It can also be found in the workspace's settings under `Version Control`.
 
-If the setup is correct Terraform Cloud should be able to perform a successful plan that shows that there are no changes needed. This indicates that the initialization phase was successful and the custom provider defined in the terraform configuration was detected and considered installed.
+* In the workspace set environment variable `TF_LOG` to `DEBUG` and queue another terraform run.
+
+If the setup is correct Terraform Cloud should be able to perform a successful plan that shows that there are no changes needed. This indicates that the initialization phase was successful and the custom provider defined in the terraform configuration was detected and considered installed. Additionally the messages in the terraform output indicate that the `okta` provider was loaded from the custom location in `terraform.d/plugins`.
 
 **Note:** When using a repository in which the git submodules are refrenced via the `SSH` scheme you must add SSH key to the created Terraform Cloud OAuth client. This key must authenticate a VCS user that has access to clone the repository referenced as a submodule. This is true even if the repository is public and in this case any valid VCS user will do.
 
