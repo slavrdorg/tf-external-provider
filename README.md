@@ -54,4 +54,4 @@ How to add an SSH key for cloning git submodules to the Terraform Cloud VCS conn
 
 * Documentation on how to use external terraform providers can be found [here](https://www.terraform.io/docs/plugins/basics.html). The page contains basic information and links to other pages with more details. 
 
-* Documentation on how to use custom providers on Terraform Cloud specifically can be found [here](https://www.terraform.io/docs/cloud/run/index.html#installing-terraform-providers).
+* Documentation on how to use custom providers on Terraform Cloud specifically can be found [here](https://www.terraform.io/docs/cloud/run/install-software.html#installing-terraform-providers).
