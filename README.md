@@ -4,9 +4,9 @@ A demo of how to use an external provider in Terraform 0.13.
 
 Demo for version 0.12 is available by checking out the 0.12 [branch](https://github.com/slavrdorg/tf-external-provider/tree/0.12) or [tag](https://github.com/slavrdorg/tf-external-provider/releases/tag/0.12) of this repo.
 
-In this project the provider binary is stored in a different git repository which is added to this one as a git [submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules). The submodule directory is `bin-tf-provider-okta`. The binary in it is for Linux/amd64.
+In this project the provider binaries are stored in a different git repository which is added to this one as a git [submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules). The submodule directory is `bin-tf-provider-okta`.
 
-The provider binary is sym-linked to the appropriate location for terraform external providers. This location depends on how the provider is declared in the Terraform configuration. For example the linux/amd64 binary for the custom `okta` provider declared in `main.tf` should be in `terraform.d/plugins/providers.local/local/okta/3.0.38`.
+The provider binaries are sym-linked to the appropriate location for terraform external providers. This location depends on how the provider is declared in the Terraform configuration. For example the linux/amd64 binary for the custom `okta` provider declared in `main.tf` should be in `terraform.d/plugins/providers.local/local/okta/3.0.38`.
 
 The sym-link must be relative from the terraform provider's directory to the directory containing the binary. For example in the case of the linux/amd64 binary:
 
@@ -16,7 +16,7 @@ terraform.d/plugins/providers.local/local/okta/3.0.38/linux_amd64/terraform-prov
 
 ## Using with Terraform CLI
 
-* Have Terraform CLI version `0.13.x` installed
+* Have Terraform CLI version `>= 0.13` installed
 
 * clone the project, including its submodules
 
